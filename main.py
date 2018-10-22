@@ -24,7 +24,7 @@ def create():
 
     pwd_error = verify(v_pwd, password)
     username_error = ""
-    email_error = ""
+    email_error = email_check(email)
 
     
     if username == "":
@@ -65,6 +65,9 @@ def email_check(email):
                 for b in range(email[a], email.length()-a-1, 1):
                     if a == ".":
                         return ""
+    if email == "":
+        return ""
+        
     return "Please enter a valid email.(example@email.com)"
 
 app.run()
