@@ -34,8 +34,9 @@ def create():
         username_error = check(username)
     
     if (pwd_error == "" and username_error == "" and email_error == ""):
-        return redirect('/welcome?title="Welcome"&username=username')
-        #incorrect return template.render(title="Welcome", username=username)
+        template = jina_env.get_template('welcome.html')
+        #incorrect --return redirect('/welcome?title="Welcome"&username=username')
+        return template.render(title="Welcome", username=username)
 
     template = jinja_env.get_template('create-account.html')
     return template.render(title="Create-Account", username=username, username_error=username_error, email=email, email_error=email_error, pwd_error=pwd_error)
