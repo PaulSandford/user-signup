@@ -60,17 +60,19 @@ def check(entry):
     return ""
     
 def email_check(email):
-    if email != "":
-        return check(email)
-    else:
-        for a in email:
-            if a == "@":
-                for b in range(email[a], len(email)-a-1, 1):
-                    if b == ".":
-                        return ""
     if email == "":
         return ""
-
+    if email != "":
+        chck = check(email)
+    if chck == "":
+        for a in range(len(email)):
+            if email[a] == "@":
+                for b in range(a, len(email)-a-1, 1):
+                    if email[b+a] == ".":
+                        return ""
+    if chck != "":
+        return chck
+    
     return "Please enter a valid email.(example@email.com)"
 
 @app.route("/welcome")
